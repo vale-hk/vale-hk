@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 
 <html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>MARK DAVIS - Portfolio</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Valeska Álvarez Romero - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -111,7 +111,7 @@
             }
         }
     </script>
-<style>
+    <style>
         .glass-card {
             background: rgba(31, 31, 41, 0.4);
             backdrop-filter: blur(20px) saturate(180%);
@@ -139,241 +139,252 @@
 <!-- Fixed Background Shader -->
 <!-- STITCH_SHADER_START:ANIMATION_5 class="fixed inset-0 w-full h-full z-[-1] opacity-60" -->
 <div class="fixed inset-0 w-full h-full z-[-1] opacity-60" style="display:block;">
-<canvas id="shader-canvas-ANIMATION_5" style="display:block;width:100%;height:100%"></canvas>
-<script>
-(function() {
-  const canvas = document.getElementById('shader-canvas-ANIMATION_5');
+    <canvas id="shader-canvas-ANIMATION_5" style="display:block;width:100%;height:100%"></canvas>
+    <script>
+        (function() {
+            const canvas = document.getElementById('shader-canvas-ANIMATION_5');
 
-  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
-  // This fires on initial layout and whenever the element is resized.
-  function syncSize() {
-    const w = canvas.clientWidth  || 1280;
-    const h = canvas.clientHeight || 720;
-    if (canvas.width !== w || canvas.height !== h) {
-      canvas.width  = w;
-      canvas.height = h;
-    }
-  }
-  if (typeof ResizeObserver !== 'undefined') {
-    new ResizeObserver(syncSize).observe(canvas);
-  }
-  syncSize();
+            function syncSize() {
+                const w = canvas.clientWidth  || 1280;
+                const h = canvas.clientHeight || 720;
+                if (canvas.width !== w || canvas.height !== h) {
+                    canvas.width  = w;
+                    canvas.height = h;
+                }
+            }
+            if (typeof ResizeObserver !== 'undefined') {
+                new ResizeObserver(syncSize).observe(canvas);
+            }
+            syncSize();
 
-  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-  if (!gl) return;
-  const vs = `attribute vec2 a_position;
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            if (!gl) return;
+            const vs = `attribute vec2 a_position;
 varying vec2 v_texCoord;
 void main() {
   v_texCoord = a_position * 0.5 + 0.5;
   gl_Position = vec4(a_position, 0.0, 1.0);
 }`;
-  const fs = `precision highp float;
+            const fs = `precision highp float;
 uniform float u_time;
 uniform vec2 u_resolution;
 varying vec2 v_texCoord;
 
 void main() {
     vec2 uv = v_texCoord;
-    
-    // Create multiple layers of wavy lines
+
     float wave = 0.0;
-    
-    // Layer 1: Purple
+
     wave += sin(uv.x * 10.0 + u_time * 0.5 + sin(uv.y * 5.0)) * 0.5 + 0.5;
     wave *= sin(uv.y * 20.0 + u_time * 0.3) * 0.5 + 0.5;
-    
-    // Layer 2: Blue
+
     float wave2 = sin(uv.x * 8.0 - u_time * 0.4 + cos(uv.y * 7.0)) * 0.5 + 0.5;
     wave2 *= cos(uv.y * 15.0 - u_time * 0.2) * 0.5 + 0.5;
-    
-    vec3 purple = vec3(0.54, 0.17, 0.89); // #8a2be2
-    vec3 blue = vec3(0.0, 0.0, 1.0);     // #0000ff
-    vec3 dark = vec3(0.039, 0.039, 0.078); // #0a0a14
-    
+
+    vec3 purple = vec3(0.54, 0.17, 0.89);
+    vec3 blue = vec3(0.0, 0.0, 1.0);
+    vec3 dark = vec3(0.039, 0.039, 0.078);
+
     vec3 color = mix(dark, purple, wave * 0.15);
     color = mix(color, blue, wave2 * 0.15);
-    
-    // Add some subtle grain/noise
+
     float noise = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
     color += noise * 0.02;
 
     gl_FragColor = vec4(color, 1.0);
 }`;
-  function cs(type, src) {
-    const s = gl.createShader(type);
-    gl.shaderSource(s, src);
-    gl.compileShader(s);
-    return s;
-  }
-  const prog = gl.createProgram();
-  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
-  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
-  gl.linkProgram(prog);
-  gl.useProgram(prog);
-  const buf = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
-  const pos = gl.getAttribLocation(prog, 'a_position');
-  gl.enableVertexAttribArray(pos);
-  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
-  const uTime = gl.getUniformLocation(prog, 'u_time');
-  const uRes = gl.getUniformLocation(prog, 'u_resolution');
-  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+            function cs(type, src) {
+                const s = gl.createShader(type);
+                gl.shaderSource(s, src);
+                gl.compileShader(s);
+                return s;
+            }
+            const prog = gl.createProgram();
+            gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+            gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+            gl.linkProgram(prog);
+            gl.useProgram(prog);
+            const buf = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+            const pos = gl.getAttribLocation(prog, 'a_position');
+            gl.enableVertexAttribArray(pos);
+            gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+            const uTime = gl.getUniformLocation(prog, 'u_time');
+            const uRes = gl.getUniformLocation(prog, 'u_resolution');
+            const uMouse = gl.getUniformLocation(prog, 'u_mouse');
 
-  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
-  // Shaders that need normalized coords should use: u_mouse / u_resolution.
-  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
-  window.addEventListener('mousemove', (event) => {
-    const rect = canvas.getBoundingClientRect();
-    if (rect.width && rect.height) {
-      const nx = (event.clientX - rect.left) / rect.width;
-      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
-      mouse.x = nx * canvas.width;
-      mouse.y = ny * canvas.height;
-    }
-  });
+            let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+            window.addEventListener('mousemove', (event) => {
+                const rect = canvas.getBoundingClientRect();
+                if (rect.width && rect.height) {
+                    const nx = (event.clientX - rect.left) / rect.width;
+                    const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+                    mouse.x = nx * canvas.width;
+                    mouse.y = ny * canvas.height;
+                }
+            });
 
-  function render(t) {
-    if (typeof ResizeObserver === 'undefined') syncSize();
-    gl.viewport(0, 0, canvas.width, canvas.height);
-    if (uTime) gl.uniform1f(uTime, t * 0.001);
-    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
-    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    requestAnimationFrame(render);
-  }
-  render(0);
-})();
-</script>
+            function render(t) {
+                if (typeof ResizeObserver === 'undefined') syncSize();
+                gl.viewport(0, 0, canvas.width, canvas.height);
+                if (uTime) gl.uniform1f(uTime, t * 0.001);
+                if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+                if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+                gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                requestAnimationFrame(render);
+            }
+            render(0);
+        })();
+    </script>
 </div>
 <!-- STITCH_SHADER_END:ANIMATION_5 -->
 <!-- SideNavBar (Desktop) -->
 <nav class="hidden md:flex fixed left-0 top-0 h-screen w-[sidebar-width] z-40 bg-surface-container-lowest dark:bg-surface-container-lowest backdrop-blur-xl border-r border-glass-border flex-col py-8 overflow-y-auto shadow-[0_20px_50px_rgba(138,43,226,0.15)]">
-<div class="px-6 mb-10 flex flex-col items-center text-center">
-<div class="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-accent-pink via-accent-purple to-accent-blue mb-4">
-<img class="w-full h-full rounded-full object-cover" data-alt="Professional portrait of Mark Davis, a UI/UX designer with curly hair, wearing glasses and a black hoodie. High quality studio lighting, soft modern backdrop, conveying creativity and technical expertise. Dark mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8w5RKBd2j1RWPcIs-9WRXbfa8r3uryx9ZPLR9lUbKCrK26XT-mqQyRe1zoVjuOTtpRSEsvuKX4vtEU5eowZTCLW5UG3dVCzZdqBIqIRSxSKEpPVXOvSASaDptuSunXD_MshGpIUJmiGbud1vE38wu6xTsT4liba2702mabXIGR7CvZGDKgRUQ0hUhh6400BHrU9meTFrZ3s3P77vaDtytePFRGSi9U1348HR0HaJoTUC1UENXdW5z"/>
-</div>
-<h1 class="text-headline-md font-headline-md font-extrabold text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">MARK DAVIS</h1>
-<p class="font-body-md text-on-surface-variant mt-1">UI/UX Designer</p>
-</div>
-<ul class="flex-1 flex flex-col gap-2 w-full">
-<li>
-<a class="flex items-center gap-4 bg-primary/20 text-on-surface border-r-4 border-primary px-6 py-3 transition-all cursor-pointer active:scale-95 font-label-md text-label-md" href="#home">
-<span class="material-symbols-outlined">home</span> Home
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#about">
-<span class="material-symbols-outlined">person</span> About
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#services">
-<span class="material-symbols-outlined">grid_view</span> Services
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#portfolio">
-<span class="material-symbols-outlined">work</span> Portfolio
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#skills">
-<span class="material-symbols-outlined">psychology</span> Skills
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#blog">
-<span class="material-symbols-outlined">article</span> Blog
-                </a>
-</li>
-<li>
-<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#contact">
-<span class="material-symbols-outlined">mail</span> Contact
-                </a>
-</li>
-</ul>
-<div class="px-6 mt-10 w-full">
-<div class="glass-card p-4 rounded-xl mb-6 text-center">
-<span class="material-symbols-outlined text-accent-pink mb-2">work_outline</span>
-<p class="font-label-md text-label-md text-on-surface mb-2">Available for Freelance</p>
-</div>
-<button class="w-full btn-gradient py-3 rounded-lg font-label-md flex items-center justify-center gap-2">
-<span class="material-symbols-outlined text-sm">download</span> Download CV
-            </button>
-<div class="flex justify-center gap-4 mt-6">
-<a class="text-on-surface-variant hover:text-accent-pink transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
-<a class="text-on-surface-variant hover:text-accent-purple transition-colors" href="#"><span class="material-symbols-outlined">account_circle</span></a>
-<a class="text-on-surface-variant hover:text-accent-blue transition-colors" href="#"><span class="material-symbols-outlined">palette</span></a>
-</div>
-</div>
+    <div class="px-6 mb-10 flex flex-col items-center text-center">
+        <div class="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-accent-pink via-accent-purple to-accent-blue mb-4">
+            <img class="w-full h-full rounded-full object-cover" alt="Foto de perfil de Valeska Álvarez Romero" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8w5RKBd2j1RWPcIs-9WRXbfa8r3uryx9ZPLR9lUbKCrK26XT-mqQyRe1zoVjuOTtpRSEsvuKX4vtEU5eowZTCLW5UG3dVCzZdqBIqIRSxSKEpPVXOvSASaDptuSunXD_MshGpIUJmiGbud1vE38wu6xTsT4liba2702mabXIGR7CvZGDKgRUQ0hUhh6400BHrU9meTFrZ3s3P77vaDtytePFRGSi9U1348HR0HaJoTUC1UENXdW5z"/>
+        </div>
+        <h1 class="text-headline-md font-headline-md font-extrabold text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">VALESKA ÁLVAREZ</h1>
+        <p class="font-body-md text-on-surface-variant mt-1">Fullstack JavaScript Trainee</p>
+    </div>
+    <ul class="flex-1 flex flex-col gap-2 w-full">
+        <li>
+            <a class="flex items-center gap-4 bg-primary/20 text-on-surface border-r-4 border-primary px-6 py-3 transition-all cursor-pointer active:scale-95 font-label-md text-label-md" href="#home">
+                <span class="material-symbols-outlined">home</span> Home
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#about">
+                <span class="material-symbols-outlined">person</span> About
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#services">
+                <span class="material-symbols-outlined">grid_view</span> Services
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#portfolio">
+                <span class="material-symbols-outlined">work</span> Portfolio
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#skills">
+                <span class="material-symbols-outlined">psychology</span> Skills
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#blog">
+                <span class="material-symbols-outlined">article</span> Blog
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#contact">
+                <span class="material-symbols-outlined">mail</span> Contact
+            </a>
+        </li>
+    </ul>
+    <div class="px-6 mt-10 w-full">
+        <div class="glass-card p-4 rounded-xl mb-6 text-center">
+            <span class="material-symbols-outlined text-accent-pink mb-2">school</span>
+            <p class="font-label-md text-label-md text-on-surface mb-2">Disponible para prácticas y primeras oportunidades Dev</p>
+        </div>
+        <a class="w-full btn-gradient py-3 rounded-lg font-label-md flex items-center justify-center gap-2" href="/mnt/user-data/outputs/CV-Valeska-Alvarez.pdf">
+            <span class="material-symbols-outlined text-sm">download</span> Descargar CV
+        </a>
+        <div class="flex justify-center gap-4 mt-6">
+            <a class="text-on-surface-variant hover:text-accent-pink transition-colors" href="https://www.linkedin.com/in/valeska-alvarez-romero/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><span class="material-symbols-outlined">link</span></a>
+            <a class="text-on-surface-variant hover:text-accent-purple transition-colors" href="https://github.com/vale-hk" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><span class="material-symbols-outlined">code</span></a>
+            <a class="text-on-surface-variant hover:text-accent-blue transition-colors" href="mailto:flga.valeska.alvarez@gmail.com" aria-label="Email"><span class="material-symbols-outlined">mail</span></a>
+        </div>
+    </div>
 </nav>
 <!-- TopNavBar (Mobile) -->
 <header class="md:hidden fixed top-0 left-0 right-0 z-50 glass-card px-margin-mobile py-4 flex justify-between items-center">
-<h1 class="text-headline-md font-headline-md font-black text-primary">MARK DAVIS</h1>
-<button class="text-on-surface">
-<span class="material-symbols-outlined text-3xl">menu</span>
-</button>
+    <h1 class="text-headline-md font-headline-md font-black text-primary">VALESKA ÁLVAREZ</h1>
+    <button class="text-on-surface">
+        <span class="material-symbols-outlined text-3xl">menu</span>
+    </button>
 </header>
 <!-- Main Content Area -->
 <main class="md:ml-[sidebar-width] w-full min-h-screen pt-20 md:pt-0">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-<!-- Hero Section -->
-<section class="min-h-screen flex items-center py-section-gap relative" id="home">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-<!-- Left Content -->
-<div class="z-10 order-2 lg:order-1">
-<p class="font-label-md text-label-md text-accent-purple tracking-widest mb-4">HELLO, I'M</p>
-<h2 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-on-surface mb-4">
-                            Mark <span class="text-gradient">Davis</span>
-</h2>
-<h3 class="text-headline-md font-headline-md text-on-surface-variant mb-6 leading-tight">
-                            I Design Experiences That Make an <span class="text-gradient">Impact.</span>
-</h3>
-<p class="font-body-lg text-body-lg text-text-body mb-8 max-w-xl">
-                            Specializing in crafting intuitive, scalable, and visually stunning digital products. Blending technical proficiency with a forward-thinking creative aesthetic.
-                        </p>
-<div class="flex flex-wrap gap-4 mb-12">
-<button class="btn-gradient px-8 py-4 rounded-xl font-label-md text-label-md flex items-center gap-2">
-                                View My Work <span class="material-symbols-outlined">arrow_forward</span>
-</button>
-<button class="glass-card px-8 py-4 rounded-xl font-label-md text-label-md text-on-surface hover:bg-glass-fill transition-all flex items-center gap-2">
-<span class="material-symbols-outlined">play_circle</span> Watch Intro
-                            </button>
-</div>
-<div>
-<p class="font-label-md text-label-md text-on-surface-variant mb-4">TRUSTED BY</p>
-<div class="flex gap-6 opacity-50 grayscale">
-<span class="material-symbols-outlined text-3xl">cloud</span>
-<span class="material-symbols-outlined text-3xl">dashboard</span>
-<span class="material-symbols-outlined text-3xl">language</span>
-<span class="material-symbols-outlined text-3xl">forum</span>
-</div>
-</div>
-</div>
-<!-- Right Image Area -->
-<div class="z-10 relative order-1 lg:order-2 flex justify-center">
-<div class="relative w-72 h-72 md:w-96 md:h-96">
-<!-- Gradient Glow -->
-<div class="absolute inset-0 rounded-full bg-brand-linear blur-3xl opacity-30 animate-pulse"></div>
-<!-- Image Container -->
-<div class="relative w-full h-full rounded-full p-2 bg-glass-gradient border border-glass-border overflow-hidden">
-<img class="w-full h-full object-cover rounded-full" data-alt="High quality, dramatic studio portrait of Mark Davis. A modern creative professional with curly hair and glasses, wearing a minimalist black hoodie. Lit with vibrant pink, purple, and blue rim lights against a dark background. Cyberpunk-adjacent aesthetic but clean and corporate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3nZssjJ2Kbu7bc_wW5SEGwd8IPV1a6y-RaZn83TU-at0zQi62NwToOXOxTyqNdRcCa0IN9t8zPNruDPM9qvHZvF6DD-kMAJG2mH389xdfxe5L-3OL32wa5WISds02kLk4GGN46farAu0gU7rFK-LclmLUQ4FALeBn-9G0VFomhtYgyynUV5utPBkv_pnJx7jdgo3KyWfGPDA9J7OLLEVNHna9r_cfvZoqYicwX1daN2EpVUkHPyCX"/>
-</div>
-<!-- Floating Card -->
-<div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-2xl flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
-<div class="w-12 h-12 rounded-full bg-accent-purple/20 flex items-center justify-center">
-<span class="text-xl font-bold text-gradient">5+</span>
-</div>
-<div>
-<p class="font-label-md text-label-md text-on-surface">Years of</p>
-<p class="font-body-sm text-on-surface-variant">Experience</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div>
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center py-section-gap relative" id="home">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="z-10 order-2 lg:order-1">
+                    <p class="font-label-md text-label-md text-accent-purple tracking-widest mb-4">HOLA, SOY</p>
+                    <h2 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-on-surface mb-4">
+                        Valeska <span class="text-gradient">Álvarez</span>
+                    </h2>
+                    <h3 class="text-headline-md font-headline-md text-on-surface-variant mb-6 leading-tight">
+                        Combino comunicación humana y tecnología para crear <span class="text-gradient">soluciones con impacto.</span>
+                    </h3>
+                    <p class="font-body-lg text-body-lg text-text-body mb-8 max-w-xl">
+                        Fonoaudióloga, Magíster en Intervención Social y Desarrollo Humano, y actualmente en formación como Fullstack JavaScript Trainee. Combino mi experiencia en salud, educación e inclusión con nuevas habilidades en JavaScript, HTML5, Tailwind CSS, Git &amp; GitHub y MySQL para construir productos digitales centrados en las personas.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-12">
+                        <a class="btn-gradient px-8 py-4 rounded-xl font-label-md text-label-md flex items-center gap-2" href="#portfolio">
+                            Ver mi trabajo <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                        <a class="glass-card px-8 py-4 rounded-xl font-label-md text-label-md text-on-surface hover:bg-glass-fill transition-all flex items-center gap-2" href="#about">
+                            <span class="material-symbols-outlined">person</span> Conóceme más
+                        </a>
+                    </div>
+                    <div>
+                        <p class="font-label-md text-label-md text-on-surface-variant mb-4">TECNOLOGÍAS Y HERRAMIENTAS</p>
+                        <div class="flex gap-6 opacity-70">
+                            <span class="material-symbols-outlined text-3xl" title="JavaScript">javascript</span>
+                            <span class="material-symbols-outlined text-3xl" title="HTML5">html</span>
+                            <span class="material-symbols-outlined text-3xl" title="Git &amp; GitHub">code</span>
+                            <span class="material-symbols-outlined text-3xl" title="MySQL">database</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Image Area -->
+                <div class="z-10 relative order-1 lg:order-2 flex justify-center">
+                    <div class="relative w-72 h-72 md:w-96 md:h-96">
+                        <!-- Gradient Glow -->
+                        <div class="absolute inset-0 rounded-full bg-brand-linear blur-3xl opacity-30 animate-pulse"></div>
+                        <!-- Image Container -->
+                        <div class="relative w-full h-full rounded-full p-2 bg-glass-gradient border border-glass-border overflow-hidden">
+                            <img class="w-full h-full object-cover rounded-full" alt="Retrato profesional de Valeska Álvarez Romero, Fullstack JavaScript Trainee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3nZssjJ2Kbu7bc_wW5SEGwd8IPV1a6y-RaZn83TU-at0zQi62NwToOXOxTyqNdRcCa0IN9t8zPNruDPM9qvHZvF6DD-kMAJG2mH389xdfxe5L-3OL32wa5WISds02kLk4GGN46farAu0gU7rFK-LclmLUQ4FALeBn-9G0VFomhtYgyynUV5utPBkv_pnJx7jdgo3KyWfGPDA9J7OLLEVNHna9r_cfvZoqYicwX1daN2EpVUkHPyCX"/>
+                        </div>
+                        <!-- Floating Card -->
+                        <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-2xl flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
+                            <div class="w-12 h-12 rounded-full bg-accent-purple/20 flex items-center justify-center">
+                                <span class="text-xl font-bold text-gradient">2+</span>
+                            </div>
+                            <div>
+                                <p class="font-label-md text-label-md text-on-surface">Años de</p>
+                                <p class="font-body-sm text-on-surface-variant">Experiencia Profesional</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </main>
+<!-- Footer -->
+<footer class="md:ml-[sidebar-width] w-full glass-card border-t border-glass-border py-10 px-margin-mobile md:px-gutter" id="contact">
+    <div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-left">
+            <p class="font-headline-md font-bold text-on-surface">Valeska Álvarez Romero</p>
+            <p class="font-body-md text-on-surface-variant">Gran Santiago, Región Metropolitana, Chile</p>
+            <p class="font-body-md text-on-surface-variant">flga.valeska.alvarez@gmail.com</p>
+        </div>
+        <div class="flex gap-4">
+            <a class="btn-gradient px-6 py-3 rounded-lg font-label-md text-label-md flex items-center gap-2" href="https://www.linkedin.com/in/valeska-alvarez-romero/" target="_blank" rel="noopener noreferrer">
+                <span class="material-symbols-outlined text-sm">link</span> LinkedIn
+            </a>
+            <a class="glass-card px-6 py-3 rounded-lg font-label-md text-label-md text-on-surface hover:bg-glass-fill transition-all flex items-center gap-2" href="https://github.com/vale-hk" target="_blank" rel="noopener noreferrer">
+                <span class="material-symbols-outlined text-sm">code</span> GitHub
+            </a>
+        </div>
+    </div>
+    <p class="text-center text-on-surface-variant font-body-md mt-8 opacity-60">© 2026 Valeska Álvarez Romero. Todos los derechos reservados.</p>
+</footer>
 </body></html>
