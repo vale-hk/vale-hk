@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MARK DAVIS - Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#65002e",
+                        "surface-variant": "#34343f",
+                        "background": "#0a0a14",
+                        "text-body": "#d1d5db",
+                        "on-primary-fixed-variant": "#6700b5",
+                        "on-tertiary-container": "#dedeff",
+                        "tertiary-fixed-dim": "#bec2ff",
+                        "inverse-on-surface": "#302f3b",
+                        "outline-variant": "#4c4354",
+                        "surface": "#12121d",
+                        "surface-container": "#1f1f29",
+                        "surface-container-high": "#292934",
+                        "inverse-primary": "#8422dc",
+                        "primary-fixed-dim": "#dcb8ff",
+                        "secondary-container": "#ff4a8d",
+                        "on-surface-variant": "#cfc2d7",
+                        "primary": "#dcb8ff",
+                        "secondary": "#ffb1c4",
+                        "on-primary-fixed": "#2c0051",
+                        "on-tertiary-fixed": "#00006e",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#ffb1c4",
+                        "on-primary-container": "#eed9ff",
+                        "error-container": "#93000a",
+                        "glass-border": "rgba(255, 255, 255, 0.12)",
+                        "on-surface": "#e4e1f0",
+                        "on-secondary-fixed": "#3f001a",
+                        "on-tertiary": "#0001ac",
+                        "secondary-fixed": "#ffd9e1",
+                        "tertiary-fixed": "#e0e0ff",
+                        "text-heading": "#ffffff",
+                        "primary-fixed": "#efdbff",
+                        "wave-secondary": "#1e3a8a",
+                        "tertiary": "#bec2ff",
+                        "surface-container-low": "#1b1b25",
+                        "surface-container-lowest": "#0d0d17",
+                        "wave-primary": "#4c1d95",
+                        "surface-dim": "#12121d",
+                        "primary-container": "#8a2be2",
+                        "on-primary": "#480081",
+                        "glass-fill": "rgba(255, 255, 255, 0.03)",
+                        "on-background": "#e4e1f0",
+                        "outline": "#988ca0",
+                        "on-error": "#690005",
+                        "surface-bright": "#393844",
+                        "on-tertiary-fixed-variant": "#0000ef",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#34343f",
+                        "on-secondary-container": "#590028",
+                        "on-secondary-fixed-variant": "#8f0044",
+                        "surface-tint": "#dcb8ff",
+                        "inverse-surface": "#e4e1f0",
+                        "tertiary-container": "#3c46ff",
+                        "accent-pink": "#ff007f",
+                        "accent-purple": "#8a2be2",
+                        "accent-blue": "#0000ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sidebar-width": "280px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "section-gap": "120px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    },
+                    "backgroundImage": {
+                        "brand-linear": "linear-gradient(to right, var(--tw-colors-accent-pink), var(--tw-colors-accent-purple), var(--tw-colors-accent-blue))",
+                        "glass-gradient": "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(31, 31, 41, 0.4);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #ff007f, #8a2be2, #0000ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .btn-gradient {
+            background: linear-gradient(to right, #ff007f, #8a2be2, #0000ff);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden relative selection:bg-accent-purple selection:text-white">
+<!-- Fixed Background Shader -->
+<!-- STITCH_SHADER_START:ANIMATION_5 class="fixed inset-0 w-full h-full z-[-1] opacity-60" -->
+<div class="fixed inset-0 w-full h-full z-[-1] opacity-60" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_5" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_5');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    
+    // Create multiple layers of wavy lines
+    float wave = 0.0;
+    
+    // Layer 1: Purple
+    wave += sin(uv.x * 10.0 + u_time * 0.5 + sin(uv.y * 5.0)) * 0.5 + 0.5;
+    wave *= sin(uv.y * 20.0 + u_time * 0.3) * 0.5 + 0.5;
+    
+    // Layer 2: Blue
+    float wave2 = sin(uv.x * 8.0 - u_time * 0.4 + cos(uv.y * 7.0)) * 0.5 + 0.5;
+    wave2 *= cos(uv.y * 15.0 - u_time * 0.2) * 0.5 + 0.5;
+    
+    vec3 purple = vec3(0.54, 0.17, 0.89); // #8a2be2
+    vec3 blue = vec3(0.0, 0.0, 1.0);     // #0000ff
+    vec3 dark = vec3(0.039, 0.039, 0.078); // #0a0a14
+    
+    vec3 color = mix(dark, purple, wave * 0.15);
+    color = mix(color, blue, wave2 * 0.15);
+    
+    // Add some subtle grain/noise
+    float noise = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+    color += noise * 0.02;
+
+    gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_5 -->
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex fixed left-0 top-0 h-screen w-[sidebar-width] z-40 bg-surface-container-lowest dark:bg-surface-container-lowest backdrop-blur-xl border-r border-glass-border flex-col py-8 overflow-y-auto shadow-[0_20px_50px_rgba(138,43,226,0.15)]">
+<div class="px-6 mb-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-accent-pink via-accent-purple to-accent-blue mb-4">
+<img class="w-full h-full rounded-full object-cover" data-alt="Professional portrait of Mark Davis, a UI/UX designer with curly hair, wearing glasses and a black hoodie. High quality studio lighting, soft modern backdrop, conveying creativity and technical expertise. Dark mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8w5RKBd2j1RWPcIs-9WRXbfa8r3uryx9ZPLR9lUbKCrK26XT-mqQyRe1zoVjuOTtpRSEsvuKX4vtEU5eowZTCLW5UG3dVCzZdqBIqIRSxSKEpPVXOvSASaDptuSunXD_MshGpIUJmiGbud1vE38wu6xTsT4liba2702mabXIGR7CvZGDKgRUQ0hUhh6400BHrU9meTFrZ3s3P77vaDtytePFRGSi9U1348HR0HaJoTUC1UENXdW5z"/>
+</div>
+<h1 class="text-headline-md font-headline-md font-extrabold text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">MARK DAVIS</h1>
+<p class="font-body-md text-on-surface-variant mt-1">UI/UX Designer</p>
+</div>
+<ul class="flex-1 flex flex-col gap-2 w-full">
+<li>
+<a class="flex items-center gap-4 bg-primary/20 text-on-surface border-r-4 border-primary px-6 py-3 transition-all cursor-pointer active:scale-95 font-label-md text-label-md" href="#home">
+<span class="material-symbols-outlined">home</span> Home
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#about">
+<span class="material-symbols-outlined">person</span> About
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#services">
+<span class="material-symbols-outlined">grid_view</span> Services
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#portfolio">
+<span class="material-symbols-outlined">work</span> Portfolio
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#skills">
+<span class="material-symbols-outlined">psychology</span> Skills
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#blog">
+<span class="material-symbols-outlined">article</span> Blog
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-3 transition-all hover:bg-glass-fill hover:scale-[1.02] cursor-pointer active:scale-95 font-label-md text-label-md" href="#contact">
+<span class="material-symbols-outlined">mail</span> Contact
+                </a>
+</li>
+</ul>
+<div class="px-6 mt-10 w-full">
+<div class="glass-card p-4 rounded-xl mb-6 text-center">
+<span class="material-symbols-outlined text-accent-pink mb-2">work_outline</span>
+<p class="font-label-md text-label-md text-on-surface mb-2">Available for Freelance</p>
+</div>
+<button class="w-full btn-gradient py-3 rounded-lg font-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span> Download CV
+            </button>
+<div class="flex justify-center gap-4 mt-6">
+<a class="text-on-surface-variant hover:text-accent-pink transition-colors" href="#"><span class="material-symbols-outlined">photo_camera</span></a>
+<a class="text-on-surface-variant hover:text-accent-purple transition-colors" href="#"><span class="material-symbols-outlined">account_circle</span></a>
+<a class="text-on-surface-variant hover:text-accent-blue transition-colors" href="#"><span class="material-symbols-outlined">palette</span></a>
+</div>
+</div>
+</nav>
+<!-- TopNavBar (Mobile) -->
+<header class="md:hidden fixed top-0 left-0 right-0 z-50 glass-card px-margin-mobile py-4 flex justify-between items-center">
+<h1 class="text-headline-md font-headline-md font-black text-primary">MARK DAVIS</h1>
+<button class="text-on-surface">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="md:ml-[sidebar-width] w-full min-h-screen pt-20 md:pt-0">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<!-- Hero Section -->
+<section class="min-h-screen flex items-center py-section-gap relative" id="home">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<!-- Left Content -->
+<div class="z-10 order-2 lg:order-1">
+<p class="font-label-md text-label-md text-accent-purple tracking-widest mb-4">HELLO, I'M</p>
+<h2 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-on-surface mb-4">
+                            Mark <span class="text-gradient">Davis</span>
+</h2>
+<h3 class="text-headline-md font-headline-md text-on-surface-variant mb-6 leading-tight">
+                            I Design Experiences That Make an <span class="text-gradient">Impact.</span>
+</h3>
+<p class="font-body-lg text-body-lg text-text-body mb-8 max-w-xl">
+                            Specializing in crafting intuitive, scalable, and visually stunning digital products. Blending technical proficiency with a forward-thinking creative aesthetic.
+                        </p>
+<div class="flex flex-wrap gap-4 mb-12">
+<button class="btn-gradient px-8 py-4 rounded-xl font-label-md text-label-md flex items-center gap-2">
+                                View My Work <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="glass-card px-8 py-4 rounded-xl font-label-md text-label-md text-on-surface hover:bg-glass-fill transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">play_circle</span> Watch Intro
+                            </button>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-4">TRUSTED BY</p>
+<div class="flex gap-6 opacity-50 grayscale">
+<span class="material-symbols-outlined text-3xl">cloud</span>
+<span class="material-symbols-outlined text-3xl">dashboard</span>
+<span class="material-symbols-outlined text-3xl">language</span>
+<span class="material-symbols-outlined text-3xl">forum</span>
+</div>
+</div>
+</div>
+<!-- Right Image Area -->
+<div class="z-10 relative order-1 lg:order-2 flex justify-center">
+<div class="relative w-72 h-72 md:w-96 md:h-96">
+<!-- Gradient Glow -->
+<div class="absolute inset-0 rounded-full bg-brand-linear blur-3xl opacity-30 animate-pulse"></div>
+<!-- Image Container -->
+<div class="relative w-full h-full rounded-full p-2 bg-glass-gradient border border-glass-border overflow-hidden">
+<img class="w-full h-full object-cover rounded-full" data-alt="High quality, dramatic studio portrait of Mark Davis. A modern creative professional with curly hair and glasses, wearing a minimalist black hoodie. Lit with vibrant pink, purple, and blue rim lights against a dark background. Cyberpunk-adjacent aesthetic but clean and corporate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3nZssjJ2Kbu7bc_wW5SEGwd8IPV1a6y-RaZn83TU-at0zQi62NwToOXOxTyqNdRcCa0IN9t8zPNruDPM9qvHZvF6DD-kMAJG2mH389xdfxe5L-3OL32wa5WISds02kLk4GGN46farAu0gU7rFK-LclmLUQ4FALeBn-9G0VFomhtYgyynUV5utPBkv_pnJx7jdgo3KyWfGPDA9J7OLLEVNHna9r_cfvZoqYicwX1daN2EpVUkHPyCX"/>
+</div>
+<!-- Floating Card -->
+<div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-2xl flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
+<div class="w-12 h-12 rounded-full bg-accent-purple/20 flex items-center justify-center">
+<span class="text-xl font-bold text-gradient">5+</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Years of</p>
+<p class="font-body-sm text-on-surface-variant">Experience</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>
