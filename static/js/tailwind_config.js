@@ -1,0 +1,101 @@
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            "colors": {
+                "on-secondary": "#65002e",
+                "surface-variant": "#34343f",
+                "background": "#0a0a14",
+                "text-body": "#d1d5db",
+                "on-primary-fixed-variant": "#6700b5",
+                "on-tertiary-container": "#dedeff",
+                "tertiary-fixed-dim": "#bec2ff",
+                "inverse-on-surface": "#302f3b",
+                "outline-variant": "#4c4354",
+                "surface": "#12121d",
+                "surface-container": "#1f1f29",
+                "surface-container-high": "#292934",
+                "inverse-primary": "#8422dc",
+                "primary-fixed-dim": "#dcb8ff",
+                "secondary-container": "#ff4a8d",
+                "on-surface-variant": "#cfc2d7",
+                "primary": "#dcb8ff",
+                "secondary": "#ffb1c4",
+                "on-primary-fixed": "#2c0051",
+                "on-tertiary-fixed": "#00006e",
+                "error": "#ffb4ab",
+                "secondary-fixed-dim": "#ffb1c4",
+                "on-primary-container": "#eed9ff",
+                "error-container": "#93000a",
+                "glass-border": "rgba(255, 255, 255, 0.12)",
+                "on-surface": "#e4e1f0",
+                "on-secondary-fixed": "#3f001a",
+                "on-tertiary": "#0001ac",
+                "secondary-fixed": "#ffd9e1",
+                "tertiary-fixed": "#e0e0ff",
+                "text-heading": "#ffffff",
+                "primary-fixed": "#efdbff",
+                "wave-secondary": "#1e3a8a",
+                "tertiary": "#bec2ff",
+                "surface-container-low": "#1b1b25",
+                "surface-container-lowest": "#0d0d17",
+                "wave-primary": "#4c1d95",
+                "surface-dim": "#12121d",
+                "primary-container": "#8a2be2",
+                "on-primary": "#480081",
+                "glass-fill": "rgba(255, 255, 255, 0.03)",
+                "on-background": "#e4e1f0",
+                "outline": "#988ca0",
+                "on-error": "#690005",
+                "surface-bright": "#393844",
+                "on-tertiary-fixed-variant": "#0000ef",
+                "on-error-container": "#ffdad6",
+                "surface-container-highest": "#34343f",
+                "on-secondary-container": "#590028",
+                "on-secondary-fixed-variant": "#8f0044",
+                "surface-tint": "#dcb8ff",
+                "inverse-surface": "#e4e1f0",
+                "tertiary-container": "#3c46ff",
+                "accent-pink": "#ff007f",
+                "accent-purple": "#8a2be2",
+                "accent-blue": "#0000ff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "2xl": "1rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "sidebar-width": "280px",
+                "margin-mobile": "20px",
+                "gutter": "24px",
+                "container-max": "1200px",
+                "section-gap": "120px"
+            },
+            "fontFamily": {
+                "display-lg-mobile": ["Inter"],
+                "label-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "display-lg": ["Inter"],
+                "headline-md": ["Inter"],
+                "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                "display-lg-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+            },
+            "backgroundImage": {
+                "brand-linear": "linear-gradient(to right, var(--tw-colors-accent-pink), var(--tw-colors-accent-purple), var(--tw-colors-accent-blue))",
+                "glass-gradient": "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)"
+            }
+        }
+    }
+}
