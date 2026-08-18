@@ -337,23 +337,23 @@
                     </div>
                 </div>
                 <div class="glass-card p-8 rounded-2xl">
-                    <form class="space-y-6">
+                    <form class="space-y-6" action="https://formspree.io/f/mzepkpez" method="POST">
                         <div>
                             <label class="block font-label-md text-on-surface mb-2" for="nombre">Nombre</label>
                             <input class="w-full bg-surface-container-low border border-glass-border rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-accent-purple focus:ring-1 focus:ring-accent-purple transition-all"
-                                   id="nombre" placeholder="Tu nombre" type="text"/>
+                                   id="nombre" name="name" placeholder="Tu nombre" type="text"/>
                         </div>
                         <div>
                             <label class="block font-label-md text-on-surface mb-2" for="email">Correo electrónico
                                 *</label>
                             <input class="w-full bg-surface-container-low border border-glass-border rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-accent-purple focus:ring-1 focus:ring-accent-purple transition-all"
-                                   id="email" placeholder="tu@email.com" required="" type="email"/>
+                                   id="email" name="email" placeholder="tu@email.com" required="" type="email"/>
                         </div>
                         <div>
                             <label class="block font-label-md text-on-surface mb-2" for="mensaje">Mensaje</label>
                             <textarea
                                     class="w-full bg-surface-container-low border border-glass-border rounded-lg px-4 py-3 text-on-surface focus:outline-none focus:border-accent-purple focus:ring-1 focus:ring-accent-purple transition-all"
-                                    id="mensaje" placeholder="¿En qué te puedo ayudar?" rows="4"></textarea>
+                                    id="mensaje" name="mensaje" placeholder="¿En qué te puedo ayudar?" rows="4"></textarea>
                         </div>
                         <button class="w-full btn-gradient py-4 rounded-xl font-label-md text-label-md flex items-center justify-center gap-2"
                                 type="submit">
